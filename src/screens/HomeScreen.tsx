@@ -1,7 +1,10 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import React, { useState } from 'react';
+
+//Components
 import FloatingButton from '../components/FloatingButton/FloatingButton';
 import InputModal from '../components/InputModel/InputModel';
+import TaskView from '../components/TaskView/TaskView';
 {
   /* ===
   HomeScreen responsilbe for showing flatlist and button
@@ -15,7 +18,6 @@ export default function HomeScreen() {
   };
 
   const handleSubmit = () => {
-   
     setModalVisible(false); //  CLOSE AFTER ADD
   };
 
@@ -25,8 +27,7 @@ export default function HomeScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Home Screen</Text>
-
+      <TaskView />
       <FloatingButton onPress={handleAddPress} />
 
       <InputModal
@@ -41,8 +42,5 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
-  text: { fontSize: 24, fontWeight: 'bold' },
 });

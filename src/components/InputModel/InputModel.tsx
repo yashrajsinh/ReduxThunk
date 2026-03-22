@@ -8,6 +8,12 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
+
+//redux dispatch
+import { useDispatch } from 'react-redux';
+//Custom action
+import { todoActions } from '../../store/actions/todoActions';
+
 {
   /* === 
   Input model opens when add floating btn is pressed 
@@ -16,9 +22,16 @@ import { Picker } from '@react-native-picker/picker';
 export default function InputModal({ visible, onSubmit, onClose }: any) {
   const [text, setText] = useState('');
   const [property, setProperty] = useState('Low');
+  const dispatch = useDispatch();
 
   const handleSubmit = () => {
-    onSubmit();
+    onSubmit(console.warn(text, property));
+    const newEntry = {
+      newText: text,
+      priority: property,
+    };
+    dispatch(todoActions(newEntry));
+    //reset state
     setText('');
     setProperty('Low');
   };
