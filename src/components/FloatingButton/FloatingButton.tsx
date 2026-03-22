@@ -1,7 +1,13 @@
 // FloatingButton.js
 import React from 'react';
 import { TouchableOpacity, StyleSheet, Text } from 'react-native';
-
+{
+  /* === 
+  Floating button responsible to show on Current tasks screen 
+  takes one prop
+  1. onPress (to handle the click)
+  === */
+}
 export default function FloatingButton({ onPress }: any) {
   return (
     <TouchableOpacity style={styles.button} onPress={onPress}>

@@ -1,6 +1,10 @@
 import { View, Text, StyleSheet } from 'react-native';
 import React from 'react';
-
+{
+  /* ===
+  TasksScreen responsilbe for showing completed tasks
+  === */
+}
 export default function TasksScreen() {
   return (
     <View style={styles.container}>

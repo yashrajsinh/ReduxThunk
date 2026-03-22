@@ -8,7 +8,11 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
-
+{
+  /* === 
+  Input model opens when add floating btn is pressed 
+  === */
+}
 export default function InputModal({ visible, onSubmit }: any) {
   const [isVisible, setIsVisible] = useState(visible);
   const [text, setText] = useState('');

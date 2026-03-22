@@ -2,7 +2,11 @@ import { View, Text, StyleSheet } from 'react-native';
 import React from 'react';
 import FloatingButton from '../components/FloatingButton/FloatingButton';
 import InputModel from '../components/InputModel/InputModel';
-
+{
+  /* ===
+  HomeScreen responsilbe for showing flatlist and button
+  === */
+}
 export default function HomeScreen() {
   const handleAddPress = () => {
     console.log('Add button pressed!');
