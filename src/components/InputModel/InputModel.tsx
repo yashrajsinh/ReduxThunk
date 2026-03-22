@@ -8,39 +8,40 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
+
+//redux dispatch
+import { useDispatch } from 'react-redux';
+//Custom action
+import { todoActions } from '../../store/actions/todoActions';
+
 {
   /* === 
   Input model opens when add floating btn is pressed 
   === */
 }
-export default function InputModal({ visible, onSubmit }: any) {
-  const [isVisible, setIsVisible] = useState(visible);
+export default function InputModal({ visible, onSubmit, onClose }: any) {
   const [text, setText] = useState('');
   const [property, setProperty] = useState('Low');
-
-  // Update local visibility if parent changes `visible`
-  React.useEffect(() => {
-    setIsVisible(visible);
-  }, [visible]);
+  const dispatch = useDispatch();
 
   const handleSubmit = () => {
-    onSubmit({ text, property });
+    onSubmit(console.warn(text, property));
+    const newEntry = {
+      newText: text,
+      priority: property,
+    };
+    dispatch(todoActions(newEntry));
+    //reset state
     setText('');
     setProperty('Low');
-    setIsVisible(false); // hide modal locally
-  };
-
-  const handleCancel = () => {
-    setIsVisible(false); // hide modal locally
   };
 
   return (
-    <Modal visible={isVisible} transparent animationType="slide">
+    <Modal visible={visible} transparent animationType="slide">
       <View style={styles.overlay}>
         <View style={styles.container}>
           <Text style={styles.title}>Add New Item</Text>
 
-          {/* Text Input */}
           <TextInput
             placeholder="Enter todo"
             value={text}
@@ -48,7 +49,6 @@ export default function InputModal({ visible, onSubmit }: any) {
             style={styles.input}
           />
 
-          {/* Dropdown */}
           <View style={styles.dropdown}>
             <Picker
               selectedValue={property}
@@ -60,14 +60,14 @@ export default function InputModal({ visible, onSubmit }: any) {
             </Picker>
           </View>
 
-          {/* Buttons */}
           <View style={styles.buttons}>
             <TouchableOpacity
               style={styles.buttonCancel}
-              onPress={handleCancel} // handle locally
+              onPress={onClose} //  CLOSE FROM PARENT
             >
               <Text style={styles.buttonText}>Cancel</Text>
             </TouchableOpacity>
+
             <TouchableOpacity
               style={styles.buttonSubmit}
               onPress={handleSubmit}

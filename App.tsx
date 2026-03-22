@@ -8,13 +8,19 @@
 import { NavigationContainer } from '@react-navigation/native';
 //componenet
 import TabNavigataion from './src/navigation/TabNavigataion';
+//redux provier
+import { Provider } from 'react-redux';
+//store
+import store from './src/store/store';
 
 NavigationContainer;
 function App() {
   return (
-    <NavigationContainer>
-      <TabNavigataion />
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <TabNavigataion />
+      </NavigationContainer>
+    </Provider>
   );
 }
 
