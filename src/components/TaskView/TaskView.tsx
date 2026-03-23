@@ -6,9 +6,12 @@ import { useDispatch, useSelector } from 'react-redux';
 //Compoent (Cardview)
 import TaskCard from '../TaskCard/TaskCard';
 
-export default function TaskView() {
+export default function TaskView({ type = 'active' }) {
   const dispatch = useDispatch();
-  const tasks = useSelector((state: any) => state);
+
+  const tasks = useSelector((state: any) =>
+    type === 'completed' ? state.completedTasks : state.activeTasks,
+  );
 
   //handle logic
   const handleToggle = id => {
@@ -18,12 +21,18 @@ export default function TaskView() {
     });
   };
 
+  const showCheckbox = type === 'active';
   return (
     <FlatList
       data={tasks}
       keyExtractor={item => item.id}
       renderItem={({ item, index }) => (
-        <TaskCard item={item} index={index} onToggle={handleToggle} />
+        <TaskCard
+          item={item}
+          index={index}
+          onToggle={handleToggle}
+          showCheckbox={showCheckbox}
+        />
       )}
     />
   );

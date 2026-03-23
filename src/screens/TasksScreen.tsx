@@ -5,18 +5,14 @@ import React from 'react';
   TasksScreen responsilbe for showing completed tasks
   === */
 }
+//show complted tasks
+import TaskView from '../components/TaskView/TaskView';
+
 export default function TasksScreen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}> Tasks to complete </Text>
+    <View style={{ flex: 1 }}>
+      <Text style={{ fontSize: 20, margin: 15 }}>Completed Tasks</Text>
+      <TaskView type="completed" />
     </View>
   );
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1, // Important: makes the parent fill the screen
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  text: { fontSize: 24, fontWeight: 'bold' },
-});

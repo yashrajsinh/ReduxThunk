@@ -1,7 +1,12 @@
 import React from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 
-export default function TaskCard({ item, index, onToggle }: any) {
+export default function TaskCard({
+  item,
+  index,
+  onToggle,
+  showCheckbox = true,
+}: any) {
   const getColor = () => {
     switch (item.priority) {
       case 'High':
@@ -16,15 +21,24 @@ export default function TaskCard({ item, index, onToggle }: any) {
   };
 
   return (
-    <View style={[styles.container, { borderLeftColor: getColor() }]}>
+    <View
+      style={[
+        styles.container,
+        item.completed && styles.completedContainer,
+        { borderLeftColor: getColor() },
+      ]}
+    >
       <Text style={styles.index}>{index + 1}.</Text>
       {/* CHEKCBOX */}
-      <Pressable
-        onPress={() => onToggle(item.id)}
-        style={[styles.checkbox, item.completed && styles.checkboxChecked]}
-      >
-        {item.completed && <Text style={styles.checkmark}>✓</Text>}
-      </Pressable>
+      {/* Show only if needed */}
+      {showCheckbox && (
+        <Pressable
+          onPress={() => onToggle(item.id)}
+          style={[styles.checkbox, item.completed && styles.checkboxChecked]}
+        >
+          {item.completed && <Text style={styles.checkmark}>✓</Text>}
+        </Pressable>
+      )}
       <View>
         <Text style={styles.text}>{item.newText}</Text>
         <Text style={[styles.priority, { color: getColor() }]}>
@@ -44,6 +58,12 @@ const styles = StyleSheet.create({
     borderLeftWidth: 6,
     backgroundColor: '#fff',
     borderRadius: 8,
+  },
+  completedContainer: {
+    backgroundColor: '#e8f5e9',
+    borderLeftWidth: 6,
+    opacity: 0.6,
+    borderLeftColor: '#2e7d32',
   },
   index: {
     fontWeight: 'bold',
