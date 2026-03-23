@@ -12,7 +12,7 @@ import { Picker } from '@react-native-picker/picker';
 //redux dispatch
 import { useDispatch } from 'react-redux';
 //Custom action
-import { todoActions } from '../../store/actions/todoActions';
+import { addTodo } from '../../store/actions/todoActions';
 
 {
   /* === 
@@ -30,7 +30,7 @@ export default function InputModal({ visible, onSubmit, onClose }: any) {
       newText: text,
       priority: property,
     };
-    dispatch(todoActions(newEntry));
+    dispatch(addTodo(newEntry));
     //reset state
     setText('');
     setProperty('Low');
