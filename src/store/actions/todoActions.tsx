@@ -5,7 +5,7 @@ export const addTodo = data => {
       payload: {
         ...data,
         id: Date.now().toString(), //  unique id
-        completed: false, // important
+        completed: false, // important to set default false
       },
     });
   };

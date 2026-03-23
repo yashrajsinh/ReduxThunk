@@ -1,4 +1,4 @@
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import React, { useState } from 'react';
 
 //Components
@@ -27,6 +27,7 @@ export default function HomeScreen() {
 
   return (
     <View style={styles.container}>
+      <Text style={{ fontSize: 20, margin: 15 }}> Tasks </Text>
       <TaskView />
       <FloatingButton onPress={handleAddPress} />
 

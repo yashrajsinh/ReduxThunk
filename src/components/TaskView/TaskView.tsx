@@ -6,9 +6,10 @@ import { useDispatch, useSelector } from 'react-redux';
 //Compoent (Cardview)
 import TaskCard from '../TaskCard/TaskCard';
 
+//show list bsaed on state
 export default function TaskView({ type = 'active' }) {
   const dispatch = useDispatch();
-
+  //if complted show completed task if not active tasks
   const tasks = useSelector((state: any) =>
     type === 'completed' ? state.completedTasks : state.activeTasks,
   );

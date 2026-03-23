@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   completedContainer: {
     backgroundColor: '#e8f5e9',
     borderLeftWidth: 6,
-    opacity: 0.6,
+    opacity: 0.45,
     borderLeftColor: '#2e7d32',
   },
   index: {
